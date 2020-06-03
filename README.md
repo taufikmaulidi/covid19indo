@@ -7,4 +7,3 @@ Data Covid Indonesia simple
 dibuat dengan html dan css
 
 Update: penambahan Data Jawa tengah
-###################################
