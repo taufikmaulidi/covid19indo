@@ -1,16 +1,25 @@
 <?php
 
 $url = "https://indonesia-covid-19.mathdro.id/api";
+$url2 = "https://indonesia-covid-19.mathdro.id/api/harian";
+
 
 $client = curl_init($url);
 curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
 $response = curl_exec($client);
+
+$client2 = curl_init($url2);
+curl_setopt($client2,CURLOPT_RETURNTRANSFER,true);
+$response2 = curl_exec($client2);
 
 $result = json_decode($response);
 $Positif = $result->jumlahKasus;
 $Meninggal = $result->meninggal;
 $Dirawat = $result->perawatan;
 $Sembuh = $result->sembuh;
+
+$result2 = json_decode($response2);
+$tmbhpositif = $result2->data[0]->penambahanKasusTerkonfirmasiTerkini;
 
 ?>
 
@@ -23,7 +32,7 @@ $Sembuh = $result->sembuh;
 <body>
 	<p class="judul"> Data Indonesia</p>
 
-
+ 
 	<table align="center" border="0" cellspacing="0" style="color: #fff;">
 		
 		<th width="200" class="color1">
@@ -62,6 +71,21 @@ $Sembuh = $result->sembuh;
 			<td></td>
 			<td class="color2"> <?php echo $Meninggal ?><br><br></td>
 		</tr>
+
+		<tr>
+			<td class="color3"> +<?php echo $tmbhpositif ?><br><br></td>
+			<td></td>
+			<td class="color2"> <br><br></td>
+			<td></td>
+			<td class="color2"> <br><br></td>
+			<td></td>
+			<td class="color2"> <br><br></td>
+		</tr>
 	</table>
+	<center>
+	<a href="jateng.php"><button class="button"> Data Jawa Tengah </button></a>
+	</center>
+
+
 </body>
 </html>		
